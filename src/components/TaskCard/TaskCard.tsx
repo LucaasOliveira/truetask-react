@@ -1,0 +1,71 @@
+/* eslint-disable no-unused-vars */
+import { Card, CardContent, Grid, IconButton, Typography } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
+import React from "react";
+import { TaskType } from "../../types";
+
+interface TaskCardProps {
+  task: TaskType;
+  handleClickOpen: (id: number) => void;
+  handleDeleteTask: (id: number) => void;
+}
+
+const TaskCard: React.FC<TaskCardProps> = ({
+  task,
+  handleClickOpen,
+  handleDeleteTask
+}) => {
+  return (
+    <Card sx={{ my: 2, mx: 5 }} key={task.id}>
+      <CardContent>
+        <Grid container>
+          <Grid item xs={10}>
+            <Typography
+              gutterBottom
+              variant="body1"
+              component="div"
+              sx={{ wordBreak: "break-all" }}
+            >
+              {task.title}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ wordBreak: "break-all" }}
+            >
+              {task.description}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{ display: "flex", justifyContent: "flex-end" }}
+          >
+            <Grid>
+              <>
+                <IconButton
+                  onClick={() => handleClickOpen(task.id)}
+                  edge="end"
+                  aria-label="edit"
+                  sx={{ marginRight: "5px" }}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  onClick={() => handleDeleteTask(task.id)}
+                  edge="end"
+                  aria-label="delete"
+                >
+                  <DeleteOutlineIcon />
+                </IconButton>
+              </>
+            </Grid>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default TaskCard;
