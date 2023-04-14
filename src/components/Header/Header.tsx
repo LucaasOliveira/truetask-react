@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TaskIcon from "@mui/icons-material/Task";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { ColorModeContext } from "../../App";
-import { doLogin } from "../../store/modules/LoggedSlice";
+import { doLogin } from "../../store/modules/LoginSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -22,7 +22,6 @@ const settings = ["Sair"];
 
 function Header() {
   const colorMode = React.useContext(ColorModeContext);
-
   const [auth, setAuth] = React.useState(true);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
@@ -49,7 +48,7 @@ function Header() {
   };
 
   const handleConfirmModal = () => {
-    dispatch(doLogin(""));
+    dispatch(doLogin());
     navigate("/");
     setAnchorElUser(null);
     setOpenConfirmModal(false);
@@ -90,7 +89,7 @@ function Header() {
                   textDecoration: "none"
                 }}
               >
-                TaskList
+                TrueTask
               </Typography>
 
               <TaskIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -111,7 +110,7 @@ function Header() {
                   textDecoration: "none"
                 }}
               >
-                TaskList
+                TrueTask
               </Typography>
             </Box>
 
