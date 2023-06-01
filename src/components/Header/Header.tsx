@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TaskIcon from "@mui/icons-material/Task";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { ColorModeContext } from "../../App";
-import { doLogin } from "../../store/modules/LoginSlice";
+import { doLogin } from "../../store/modules/LoggedSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -48,7 +48,7 @@ function Header() {
   };
 
   const handleConfirmModal = () => {
-    dispatch(doLogin());
+    dispatch(doLogin(""));
     navigate("/");
     setAnchorElUser(null);
     setOpenConfirmModal(false);
