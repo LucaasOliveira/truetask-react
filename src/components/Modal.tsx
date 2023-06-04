@@ -33,25 +33,8 @@ const Modal: React.FC<ModalProps> = ({
     if (id !== 0) {
       setNewTitle(taskId?.title as string);
       setNewDescription(taskId?.description as string);
-
-      let errorMessage = "";
-
-      const isEmpty = () => {
-        if (newTitle === "" || newDescription === "") {
-          errorMessage = "Adicione o nome e/ou a descrição da tarefa.";
-          return false;
-        } else {
-          return true;
-        }
-      };
-
-      if (isEmpty()) {
-        return { valid: true, newTitle, newDescription };
-      } else {
-        return { valid: false, message: errorMessage };
-      }
     }
-  }, [taskId]);
+  }, [id, taskId]);
 
   return (
     <Dialog open={isOpen}>
